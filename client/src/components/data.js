@@ -18,7 +18,7 @@ const infos = [
     {
         "title":"Our Services",
         "image":montessori3,
-        "description":"I'm Sarah Picovky and I want to invete you to meet our sweet gan, a warn place with family atmosphera and healthy home made meals.",
+        "description":"I'm Sarah Picovky and I want to invite you to meet our sweet gan, a warm place with family atmosphere and healthy home made meals.",
         "link":"services"
     },
 

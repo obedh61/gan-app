@@ -1,4 +1,4 @@
-version: '3.8'
+
 
 services:
   mongo:
@@ -20,7 +20,7 @@ services:
       - NODE_ENV=development
       - PORT=8000
       - CLIENT_URL=http://localhost:3000
-      - DATABASE=mongodb://mongo:27017/ganapp
+      - DATABASE=mongodb+srv://obedh61:0OmlUH2kEnUzLjSY@cluster0.mh6kp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
       - JWT_SECRET=4652162DFSD5F4E86FDGFDFGSR
       - JWT_ACCOUNT_ACTIVATION=D65F468D54F6D2411854D2G41F5G
       - EMAIL_TO=obedhc91@gmail.com
