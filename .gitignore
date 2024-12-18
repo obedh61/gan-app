@@ -1,0 +1,17 @@
+# Node.js
+node_modules/
+.env
+
+# Build files
+/build
+/dist
+
+# Logs
+*.log
+
+# Docker
+docker-compose.override.yml
+
+# IDEs
+.vscode/
+.DS_Store

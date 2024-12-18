@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:6.0
+    container_name: mongo_container
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build: ./server
+    container_name: express_server
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - NODE_ENV=development
+      - PORT=8000
+      - CLIENT_URL=http://localhost:3000
+      - DATABASE=mongodb://mongo:27017/ganapp
+      - JWT_SECRET=4652162DFSD5F4E86FDGFDFGSR
+      - JWT_ACCOUNT_ACTIVATION=D65F468D54F6D2411854D2G41F5G
+      - EMAIL_TO=obedhc91@gmail.com
+      - EMAIL_FROM=obedhc91@gmail.com
+      - JWT_RESET_PASSWORD=65DF4SD65F1D5641F5DGC
+      - GOOGLE_CLIENT_ID=626293508032-aov298vj5hd9jfopujfkvsppl63pc5oj.apps.googleusercontent.com
+      - EMAIL_USER=obedh61@gmail.com
+      - EMAIL_PASSWORD='evam apxk zolw sfza'
+      - SESSION_SECRET=worktracker-secret
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./client
+    container_name: react_client
+    restart: always
+    ports:
+      - "3000:80"
+    environment:
+      - REACT_APP_API=http://backend:8000/api
+      - REACT_APP_GOOGLE_CLIENT_ID=626293508032-aov298vj5hd9jfopujfkvsppl63pc5oj.apps.googleusercontent.com
+    depends_on:
+      - backend
+
+volumes:
+  mongo-data:
