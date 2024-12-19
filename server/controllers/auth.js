@@ -157,6 +157,7 @@ exports.signup = async (req, res) => {
 
 const sendActivationEmail = async (email, token, transporter) => {
   try {
+    const curl = process.env.NODE_ENV === 'production' ? 'https://gansecondhome.com' : process.env.CLIENT_URL
     const result = await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: email,
@@ -164,10 +165,10 @@ const sendActivationEmail = async (email, token, transporter) => {
       text: 'Welcome to Gan Montessori Second Home',
       html: `
         <h1>Please use the following link to activate your account</h1>
-        <p>${process.env.CLIENT_URL}/auth/activate/${token}</p>
+        <p>${curl}/auth/activate/${token}</p>
         <hr />
         <p>This email contains sensitive information</p>
-        <p>${process.env.CLIENT_URL}</p>
+        <p>${curl}</p>
       `,
     });
     
@@ -391,7 +392,7 @@ exports.forgotPassword = async (req, res) => {
     // Actualizar el usuario con el token de restablecimiento
     user.resetPasswordLink = token;
     await user.save();
-
+    const curl = process.env.NODE_ENV === 'production' ? 'https://gansecondhome.com' : process.env.CLIENT_URL
     // Crear el contenido del correo electrónico
     const emailData = {
       from: process.env.EMAIL_USER, // El correo desde el cual se enviará el mensaje
@@ -400,10 +401,10 @@ exports.forgotPassword = async (req, res) => {
       text: 'and easy to do anywhere, even with Node.js',
       html: `
         <h1>Please use the following link to reset your password.</h1>
-        <p>${process.env.CLIENT_URL}/auth/password/reset/${token}</p>
+        <p>${curl}/auth/password/reset/${token}</p>
         <hr />
         <p>This email contains sensitive information</p>
-        <p>${process.env.CLIENT_URL}</p>
+        <p>${curl}</p>
       `,
     };
 

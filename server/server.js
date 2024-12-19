@@ -25,7 +25,7 @@ app.use(helmet());
 app.use(compression());
 
 const corsOptions = {
-    origin: process.env.NODE_ENV === 'production' ? 'https://your-production-domain.com' : 'http://localhost:3000',
+    origin: process.env.NODE_ENV === 'production' ? 'https://gansecondhome.com' : 'http://localhost:3000',
     credentials: true,
 };
 app.use(cors(corsOptions));
