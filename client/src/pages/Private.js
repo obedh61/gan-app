@@ -1,7 +1,6 @@
 import React from 'react'
-import { Box, Button } from '@mui/material'
+import { Box } from '@mui/material'
 import DrawerAppBar from '../components/Bar'
-import StepperClient from '../components/Stepper'
 import StepForm from '../components/StepForm'
 
 export const Private = () => {

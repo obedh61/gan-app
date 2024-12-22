@@ -5,6 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Footer from '../components/Footer';
 import DrawerAppBar from '../components/Bar';
 import Map from '../components/Map'; // Importar el componente Map para mostrar ubicaciones
+import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
+import { useNavigate } from "react-router-dom";
 
 const PrivateSession = () => {
   const [idNumber, setIdNumber] = useState('');
@@ -12,6 +14,8 @@ const PrivateSession = () => {
   const [month, setMonth] = useState('');
   const [sessions, setSessions] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState(null); // Para manejar la ubicación seleccionada
+
+  const navigate = useNavigate()
 
   const fetchSessions = async () => {
     try {
@@ -84,6 +88,19 @@ const PrivateSession = () => {
             <TextField label="Month" variant="outlined" margin="normal" type="number" onChange={(e) => setMonth(e.target.value)} value={month} />
             <Button variant="contained" color="success" sx={{ marginTop: 2 }} onClick={fetchSessions}>
               Get Sessions
+            </Button>
+            <Button
+              key="sign out"
+              sx={{ color: '#fff', margin: 2 }}
+              component={Button}
+              color="secondary"
+              variant="contained"
+              endIcon={<DashboardCustomizeIcon />}
+              onClick={() => {
+                navigate('/admin');
+              }}
+            >
+              {"Dasboard"}
             </Button>
           </Box>
           <TableContainer component={Paper} sx={{ marginTop: 4 }}>

@@ -1,6 +1,5 @@
 import React from 'react'
 import DrawerAppBar from '../components/Bar'
-import BlogPost from '../components/BlogPost'
 import { Box } from '@mui/material';
 import Footer from '../components/Footer'
 import BlogAbut from '../components/BlogAbout';

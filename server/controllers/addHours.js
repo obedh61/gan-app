@@ -20,6 +20,8 @@ exports.addhours = async (req, res) => {
 }
 
 exports.readsessions = async (req, res) => {
+    console.log('session aqui get');
+    
     try {
       const sessions = await WorkSession.find({ userId: req.session.userId });
       res.json(sessions);
@@ -29,6 +31,7 @@ exports.readsessions = async (req, res) => {
 }
 
 exports.addsessions = async (req, res) => {
+  console.log('session aqui post');
     const { startTime, endTime } = req.body;
     if (!startTime || !endTime) {
       return res.status(400).json({ message: 'Both startTime and endTime are required' });

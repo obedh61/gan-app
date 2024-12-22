@@ -1,21 +1,12 @@
-
 import DrawerAppBar from '../components/Bar';
-import ImgMediaCard from '../components/Card';
-
-import MenuApp from '../components/MenuApp';
-import { Box, Container, Grid } from '@mui/material';
-import infos from '../components/data'
-import { isAuth } from './helpers';
+import { Box, Container, Button } from '@mui/material';
 import Footer from '../components/Footer';
-import MontessoriComponent from '../components/Carucel';
-import ScheduleComponent from '../components/ScheduleComponent';
-import { AddWorker } from '../components/AddWorker';
 import { ViewChildren } from '../components/ViewChildren';
-
-
-
+import { useNavigate } from 'react-router-dom';
+import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
 
 function ViewChildPage() {
+  const navigate = useNavigate()
   return (
     <Box
       sx={{
@@ -28,33 +19,24 @@ function ViewChildPage() {
         <Box>
           <DrawerAppBar />
         </Box>
-        
-          
-        
+                
         <Container >
-          
-        {/* <Box 
-          display="flex"
-          flexDirection={"column"}
-          maxWidth={400}
-          alignItems={"center"}
-          justifyContent={"center"}
-          margin={"auto"}
-          
-          padding={3}
-          borderRadius={5}
-          boxShadow={"5px 5px 10px #ccc"}
-          sx={{
-            ":hover": {
-              boxShadow: "10px 10px 20px #ccc"
-            }
-          }}
-        >
-          
-        </Box> */}
 
         </Container>
         <ViewChildren />
+        <Button
+          key="sign out"
+          sx={{ color: '#fff', margin: 2 }}
+          component={Button}
+          color="secondary"
+          variant="contained"
+          endIcon={<DashboardCustomizeIcon />}
+          onClick={() => {
+            navigate('/admin');
+          }}
+        >
+          {"Dasboard"}
+        </Button>
       </Box>
       
       <Footer/>

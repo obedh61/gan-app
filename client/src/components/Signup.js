@@ -4,6 +4,8 @@ import HowToRegIcon from '@mui/icons-material/HowToReg';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer} from 'react-toastify';
+
 
 function Signup() {
   const [values, setValues] = useState({
@@ -65,6 +67,7 @@ function Signup() {
               {buttonText}
             </Button>
         </Box>
+        <ToastContainer/>
     </form>
   )
 }

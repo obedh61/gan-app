@@ -20,7 +20,7 @@ const Timer = () => {
 
   useEffect(() => {
     if (loggedIn) {
-      fetchSessions();
+      // fetchSessions();
       checkActiveSession(); // Check for any active session on load
     }
   }, [loggedIn]);
@@ -137,7 +137,7 @@ const Timer = () => {
       if (response.ok) {
         setEndTime(now);
         toast.success('Session ended successfully');
-        fetchSessions(); // Refresh sessions
+        // fetchSessions(); // Refresh sessions
         setLocation(location)
       } else {
         const error = await response.json();
@@ -149,22 +149,22 @@ const Timer = () => {
     }
   };
 
-  const fetchSessions = async () => {
-    try {
-      const response = await fetch(`${process.env.REACT_APP_API}/sessions`, {
-        credentials: 'include',
-      });
+  // const fetchSessions = async () => {
+  //   try {
+  //     const response = await fetch(`${process.env.REACT_APP_API}/sessions`, {
+  //       credentials: 'include',
+  //     });
 
-      if (response.ok) {
-        const data = await response.json();
-        setSessions(data);
-      } else {
-        toast.error('Failed to fetch sessions');
-      }
-    } catch (err) {
-      console.error('Error fetching sessions:', err);
-    }
-  };
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       setSessions(data);
+  //     } else {
+  //       toast.error('Failed to fetch sessions');
+  //     }
+  //   } catch (err) {
+  //     console.error('Error fetching sessions:', err);
+  //   }
+  // };
 
   // const location = {
   //   latitude: 32.0853,

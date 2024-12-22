@@ -1,17 +1,8 @@
-
 import DrawerAppBar from '../components/Bar';
 import ImgMediaCard from '../components/Card';
-
-import MenuApp from '../components/MenuApp';
 import { Box, Container, Grid } from '@mui/material';
 import infos from '../components/data'
-import { isAuth } from './helpers';
 import Footer from '../components/Footer';
-import MontessoriComponent from '../components/Carucel';
-import ScheduleComponent from '../components/ScheduleComponent';
-
-
-
 
 function Blogs() {
   return (

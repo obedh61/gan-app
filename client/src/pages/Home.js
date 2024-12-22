@@ -1,7 +1,5 @@
-
 import DrawerAppBar from '../components/Bar';
 import ImgMediaCard from '../components/Card';
-
 import MenuApp from '../components/MenuApp';
 import { Box, Container, Grid } from '@mui/material';
 import infos from '../components/data'
