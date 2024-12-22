@@ -40,10 +40,14 @@ services:
     ports:
       - "3000:80"
     environment:
-      - REACT_APP_API=http://backend:8000/api
+      - REACT_APP_API=http://54.221.163.71:8000/api
       - REACT_APP_GOOGLE_CLIENT_ID=626293508032-aov298vj5hd9jfopujfkvsppl63pc5oj.apps.googleusercontent.com
     depends_on:
       - backend
 
 volumes:
   mongo-data:
+
+networks:
+  app_network:
+    driver: bridge

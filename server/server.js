@@ -24,8 +24,11 @@ app.use(express.json({ limit: '10kb' }));
 app.use(helmet());
 app.use(compression());
 
+
+
 const corsOptions = {
-    origin: process.env.NODE_ENV === 'production' ? 'https://gansecondhome.com' : 'http://localhost:3000',
+    origin: 'https://gansecondhome.com',
+    methods: ['POST', 'GET', 'PUT', 'DELETE'],
     credentials: true,
 };
 app.use(cors(corsOptions));
@@ -57,7 +60,7 @@ app.use('/api', childRoutes);
 app.use('/api', addWorkerRoutes);
 app.use('/api', addhoursRoutes);
 app.use('/api', timesessionRoutes);
-
+app.get('/api/health', (req, res) => res.status(200).send('OK'));
 // Serve static files in production
 if (process.env.NODE_ENV === 'production') {
     const path = require('path');
@@ -75,6 +78,6 @@ app.use((err, req, res, next) => {
 });
 
 const port = process.env.PORT || 8000;
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
     console.log(`API is running on port ${port} - ${process.env.NODE_ENV}`);
 });

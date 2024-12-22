@@ -1,26 +1,25 @@
-# Etapa de construcción
-FROM node:18 as build
+# Etapa 1: Construcción
+FROM node:18 AS build
 WORKDIR /app
 
-# Copia el archivo de entorno
-COPY .env .env
-
-# Instala dependencias
-COPY package*.json ./ 
-RUN npm install
+# Copia los archivos necesarios
+COPY package.json package-lock.json ./
+RUN npm ci
 
 # Copia el código fuente
-COPY . ./ 
+COPY . ./
 
-# Construye el proyecto
+# Construye la aplicación
 RUN npm run build
 
-# Etapa de servidor con NGINX
+# Etapa 2: Servidor Nginx
 FROM nginx:stable-alpine
 COPY --from=build /app/build /usr/share/nginx/html
 
-# Copia la configuración de NGINX
+# Configuración de Nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
+# Exposición del puerto
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
+
