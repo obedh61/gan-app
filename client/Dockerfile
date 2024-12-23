@@ -15,8 +15,8 @@ RUN npm run build
 # Etapa 2: Servidor Nginx
 FROM nginx:stable-alpine
 
-# Configura la zona horaria de Israel/Jerusalén
-RUN apk add --no-cache tzdata && \
+# Instalar tzdata
+RUN apk update && apk add tzdata && \
     cp /usr/share/zoneinfo/Asia/Jerusalem /etc/localtime && \
     echo "Asia/Jerusalem" > /etc/timezone && \
     apk del tzdata
