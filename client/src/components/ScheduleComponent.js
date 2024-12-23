@@ -6,7 +6,7 @@ const ScheduleComponent = () => {
 
   const summerSchedule = {
     sundayToThursday: "07:30 - 16:00",
-    friday: "07:30 - 12:00",
+    friday: "08:00 - 12:00",
   };
 
   const renderSchedule = (day, schedule) => (
