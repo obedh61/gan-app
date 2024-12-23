@@ -147,8 +147,8 @@ exports.fetchSessions = async (req, res) => {
 
     const formattedSessions = sessions.map(session => {
       // Convertir a hora de Israel usando moment-timezone
-      const startTime = moment(session.startTime).tz('Asia/Jerusalem');
-      const endTime = session.endTime ? moment(session.endTime).tz('Asia/Jerusalem') : moment();
+      const startTime = moment(session.startTime).tz('Asia/Jerusalem', true);
+      const endTime = session.endTime ? moment(session.endTime).tz('Asia/Jerusalem', true) : moment();
       
       // Calcular la duración en milisegundos
       const durationMs = endTime.diff(startTime);
