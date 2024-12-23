@@ -68,7 +68,7 @@ export const AddWorker = () => {
       setWorkers(response.data);
       toast.success("Workers fetched successfully!");
     } catch (error) {
-      console.error("Error fetching workers:", error);
+      // console.error("Error fetching workers:", error);
       toast.error("Error fetching workers.");
     }
   };
@@ -80,7 +80,7 @@ export const AddWorker = () => {
       toast.success("Worker deleted successfully!");
       fetchWorkers(); // Refresh the workers list
     } catch (error) {
-      console.error("Error deleting worker:", error);
+      // console.error("Error deleting worker:", error);
       toast.error("Error deleting worker.");
     }
   };

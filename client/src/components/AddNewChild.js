@@ -55,7 +55,7 @@ export const AddNewChild = () => {
         toast.success('Child added successfully');
       })
       .catch((error) => {
-        console.error('Error adding child:', error);
+        // console.error('Error adding child:', error);
         setMessage('Error adding child: ' + (error.response?.data?.message || 'Unknown error'));
         toast.error('Error adding child: ' + (error.response?.data?.message || 'Unknown error'));
       });
