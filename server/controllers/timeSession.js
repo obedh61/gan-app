@@ -19,9 +19,13 @@ exports.startTime = async (req, res) => {
     console.log(typeof location);
     
     try {
-      const today = new Date();
+      const todayDate = new Date().toLocaleString("en-US", { timeZone: "Asia/Jerusalem" });
+      const today = new Date(todayDate);  // Convertimos el string a un objeto Date
+
+      // Ahora, podemos ajustar la hora a las 00:00:00.000
       today.setHours(0, 0, 0, 0);
-  
+      console.log(today);
+      
       const existingSession = await TimeSession.findOne({
         idNumber: idNumber,
         startTime: { $gte: today },

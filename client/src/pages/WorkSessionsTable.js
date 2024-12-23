@@ -4,16 +4,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from '../components/Footer';
 import DrawerAppBar from '../components/Bar';
-import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
-import { useNavigate } from "react-router-dom";
 
 const WorkSessionsTable = () => {
   const [idNumber, setIdNumber] = useState('');
   const [year, setYear] = useState('');
   const [month, setMonth] = useState('');
   const [sessions, setSessions] = useState([]);
-
-  const navigate = useNavigate()
 
   // Function to fetch the session data based on the year, month, and idNumber
   const fetchSessions = async () => {
@@ -126,19 +122,7 @@ const WorkSessionsTable = () => {
             >
               Get Sessions
             </Button>
-            <Button
-              key="sign out"
-              sx={{ color: '#fff', margin: 2 }}
-              component={Button}
-              color="secondary"
-              variant="contained"
-              endIcon={<DashboardCustomizeIcon />}
-              onClick={() => {
-                navigate('/admin');
-              }}
-            >
-              {"Dasboard"}
-            </Button>
+
           </Box>
 
           {/* Display Sessions Table */}
