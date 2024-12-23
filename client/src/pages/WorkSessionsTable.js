@@ -36,8 +36,14 @@ const WorkSessionsTable = () => {
   const calculateTotalTime = (timeIn, timeOut) => {
     if (!timeOut) return "Ongoing";
 
-    const start = new Date(timeIn);
-    const end = new Date(timeOut);
+    // Convertimos timeIn y timeOut a objetos Date en la zona horaria Asia/Jerusalem
+    const startDate = new Date(timeIn).toLocaleString("en-US", { timeZone: "Asia/Jerusalem" });
+    const endDate = new Date(timeOut).toLocaleString("en-US", { timeZone: "Asia/Jerusalem" });
+
+    // Convertir las fechas de nuevo a Date (para hacer cálculos de diferencia)
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
     const durationMs = end - start; // in milliseconds
 
     if (durationMs <= 0) return "Invalid time";
