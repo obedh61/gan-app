@@ -15,7 +15,7 @@ exports.register = async (req, res) => {
         const pdfPath = path.join(__dirname, 'output', 'contract.pdf');
         await createPDF(pdfData, pdfPath);
 
-        const recipients = ['obedh61@gmail.com', 'obedhc91@gmail.com'];
+        const recipients = ['obedh61@gmail.com', 'obedhc91@gmail.com', 'gansecondhome@gmail.com'];
         const subject = 'Contract Registration';
         const body = 'Welcome to Gan Montessori Second Home. Please find your contract attached.';
         await sendEmail(recipients, subject, body, pdfPath);

@@ -18,6 +18,10 @@ function createDetailedPDF(data, outputPath) {
         let anoInicio = startDate.getFullYear()
         let mesInicio = startDate.getMonth()
         let diaInicio = startDate.getDate()
+        let anoFinal = anoInicio
+
+        if((mesInicio+1) > 8) 
+            anoFinal++
 
         const writeStream = fs.createWriteStream(outputPath);
         doc.pipe(writeStream);
@@ -47,7 +51,7 @@ function createDetailedPDF(data, outputPath) {
         doc.text(`Start date: ${diaInicio}/${mesInicio+1}/${anoInicio}`, {
             align: 'left'
         });
-        doc.text(`End date: 01/08/${anoInicio+1}`, {
+        doc.text(`End date: 01/08/${anoFinal}`, {
             align: 'left'
         });
         doc.moveDown(2);
