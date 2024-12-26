@@ -51,7 +51,7 @@ function createDetailedPDF(data, outputPath) {
         doc.text(`Start date: ${diaInicio}/${mesInicio+1}/${anoInicio}`, {
             align: 'left'
         });
-        doc.text(`End date: 01/08/${anoFinal}`, {
+        doc.text(`End date: 08/08/${anoFinal}`, {
             align: 'left'
         });
         doc.moveDown(2);
