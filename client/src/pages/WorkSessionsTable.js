@@ -61,8 +61,8 @@ const WorkSessionsTable = () => {
 
     sessions.forEach((session) => {
       const totalTime = calculateTotalTime(
-        new Date(`${session.year}-${session.month}-${session.day}T${session.timeIn}`),
-        session.timeOut ? new Date(`${session.year}-${session.month}-${session.day}T${session.timeOut}`) : null
+        new Date(`${session.year}-${String(session.month).padStart(2, '0')}-${String(session.day).padStart(2, '0')}T${session.timeIn}`),
+        session.timeOut ? new Date(`${session.year}-${String(session.month).padStart(2, '0')}-${String(session.day).padStart(2, '0')}T${session.timeOut}`) : null
       );
 
       // Extract hours and minutes if valid
@@ -146,9 +146,13 @@ const WorkSessionsTable = () => {
               </TableHead>
               <TableBody>
                 {sessions.map((session, index) => {
-                  const timeIn = new Date(`${session.year}-${session.month}-${session.day}T${session.timeIn}`);
-                  const timeOut = session.timeOut 
-                    ? new Date(`${session.year}-${session.month}-${session.day}T${session.timeOut}`) 
+                  const timeIn = new Date(
+                    `${session.year}-${String(session.month).padStart(2, '0')}-${String(session.day).padStart(2, '0')}T${session.timeIn}`
+                  );
+                  const timeOut = session.timeOut
+                    ? new Date(
+                        `${session.year}-${String(session.month).padStart(2, '0')}-${String(session.day).padStart(2, '0')}T${session.timeOut}`
+                      )
                     : null;
 
                   const totalTime = calculateTotalTime(timeIn, timeOut);
