@@ -8,6 +8,7 @@ import { Box, Button, TextField, Typography } from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PanToolIcon from '@mui/icons-material/PanTool';
+import CircularProgress from '@mui/material/CircularProgress';
 import Map from './Map';
 
 const Timer = () => {
@@ -16,7 +17,8 @@ const Timer = () => {
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
   const [sessions, setSessions] = useState([]);
-  const [location, setLocation] = useState(null)
+  const [location, setLocation] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (loggedIn) {
@@ -92,6 +94,7 @@ const Timer = () => {
   
 
   const handleStart = async () => {
+    setLoading(true); // Bloquea el botón
     const now = new Date().toLocaleString("en-US", { timeZone: "Asia/Jerusalem" });
 
     try {
@@ -118,10 +121,13 @@ const Timer = () => {
     } catch (err) {
       console.error('Error starting session:', err);
       toast.error('Failed to get location or start session.');
+    } finally {
+      setLoading(false); // Desbloquea el botón
     }
   };
 
   const handleEnd = async () => {
+    setLoading(true); // Bloquea el botón
     const now = new Date().toLocaleString("en-US", { timeZone: "Asia/Jerusalem" });
     console.log(now);
     
@@ -146,6 +152,8 @@ const Timer = () => {
     } catch (err) {
       console.error('Error ending session:', err);
       toast.error('Failed to get location or end session.');
+    } finally {
+      setLoading(false); // Desbloquea el botón
     }
   };
 
@@ -221,22 +229,32 @@ const Timer = () => {
             {!startTime ? (
               <Button
                 onClick={handleStart}
-                endIcon={<AccessTimeIcon />}
+                endIcon={!loading && <AccessTimeIcon />}
                 sx={{ marginTop: 3, borderRadius: 3 }}
                 variant="contained"
                 color="success"
+                disabled={loading}
               >
-                Start Work
+                {loading ? (
+                  <CircularProgress size={24} color="inherit" />
+                ) : (
+                  'Start Work'
+                )}
               </Button>
             ) : !endTime ? (
               <Button
                 onClick={handleEnd}
-                endIcon={<PanToolIcon />}
+                endIcon={!loading && <PanToolIcon />}
                 sx={{ marginTop: 3, borderRadius: 3 }}
                 variant="contained"
                 color="error"
+                disabled={loading}
               >
-                End Work
+                {loading ? (
+                  <CircularProgress size={24} color="inherit" />
+                ) : (
+                  'End Work'
+                )}
               </Button>
             ) : (
               <Typography variant="subtitle1" padding={3} textAlign={"center"}>
